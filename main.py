@@ -3,10 +3,16 @@ import requests
 import re
 from animals.dog import dog_image, dog_video
 from animals.cat import cat_image, cat_video
+import logging
+import os
+from env import TELEGRAM_BOT_TOKEN
+
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 def main():
     print("Bot started...")
-    updater = Updater('1768649263:AAHvQi3teNv7bkU6vOC5S8Swb9_TPn_qKVo', use_context=True)
+    updater = Updater(TELEGRAM_BOT_TOKEN, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('dogimage',dog_image))
     dp.add_handler(CommandHandler('dogvideo',dog_video))

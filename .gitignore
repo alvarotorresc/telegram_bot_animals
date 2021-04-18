@@ -1,1 +1,3 @@
-animals/__pycache__
+*/__pycache__
+env.py
+__pycache__
