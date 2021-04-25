@@ -2,7 +2,7 @@ from telegram.ext import Updater, CommandHandler
 from animals.dog import dog_image, dog_video
 from animals.cat import cat_image, cat_video
 import logging
-from env import TELEGRAM_BOT_TOKEN
+import os
 from utils_commands import help, start
 
 
@@ -11,7 +11,8 @@ logging.basicConfig(level=logging.INFO,
 
 def main():
     print("Bot started...")
-    updater = Updater(TELEGRAM_BOT_TOKEN, use_context=True)
+    token = os.getenv("TELEGRAM_BOT_TOKEN")
+    updater = Updater(token, use_context=True)
     dispatcher = updater.dispatcher
     dispatcher.add_handler(CommandHandler('start', start))
     dispatcher.add_handler(CommandHandler('dogimage',dog_image))
